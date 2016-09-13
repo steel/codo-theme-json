@@ -10,5 +10,15 @@ First
 
 Then, add `--theme json` to `.codoopts` or command line.
 
+## Output
 
-
+    ├── class
+    |   ├── ...json files
+    |   ├── index.json
+    |   |
+    ├── mixin
+    |   ├── ...json files
+    |   ├── index.json
+    ├── extra
+    |   ├── ...json files
+    |   ├── index.json
