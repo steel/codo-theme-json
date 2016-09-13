@@ -27,6 +27,15 @@ module.exports = class Theme.Templater
 
     JSON.stringify(obj, null, "\t")
 
+  indexJSON: (tree) ->
+    replacer = (key, val) ->
+      if key == "children" && val.length == 0
+        undefined
+      else
+        val
+
+    JSON.stringify(tree, replacer, "\t")
+
   # @param [String] template the template name
   # @param [Object] context the context object
   # @param [String] filename the output file name

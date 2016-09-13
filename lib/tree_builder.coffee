@@ -1,4 +1,5 @@
 Theme = require './_theme'
+_ = require "lodash"
 
 module.exports = class Theme.TreeBuilder
 
@@ -25,9 +26,12 @@ module.exports = class Theme.TreeBuilder
         entry.entity = entry.entity || entity
         return entry.children
 
-    storage.push entry =
-      name:     name
+    entry =
+      name: name
       children: []
-      entity:   entity
+
+    entry.file = entity.file?.path if entity?
+
+    storage.push entry
 
     entry.children

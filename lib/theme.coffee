@@ -90,14 +90,28 @@ module.exports = class Theme.Theme
   #
   # RENDERERS
   #
+  # renderIndex: ->
+  #   @render 'index', 'index.json', entity: TreeBuilder.build @environment.visibleClasses(), (klass) ->
+  #     [klass.basename, klass.namespace.split('.')]
+
   renderClasses: ->
+    @render 'index', 'class/index.json', entity: TreeBuilder.build @environment.visibleClasses(), (klass) ->
+      [klass.basename, klass.namespace.split('.')]
+
     for klass in @environment.visibleClasses()
       @render 'class', @pathFor('class', klass), entity: klass
 
   renderMixins: ->
+    @render 'index', 'mixin/index.json', entity: TreeBuilder.build @environment.visibleMixins(), (klass) ->
+      [klass.basename, klass.namespace.split('.')]
+
     for mixin in @environment.visibleMixins()
       @render 'mixin', @pathFor('mixin', mixin), entity: mixin
 
   renderExtras: ->
+    @render 'index', 'extra/index.json', entity: TreeBuilder.build @environment.visibleExtras(), (extra) ->
+      result = extra.name.split('/')
+      [result.pop(), result]
+
     for extra in @environment.visibleExtras()
       @render 'extra', @pathFor('extra', extra), entity: extra
