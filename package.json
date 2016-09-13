@@ -1,6 +1,6 @@
 {
   "name": "codo-theme-json",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "JSON Codo theme",
   "main": "index.js",
   "scripts": {
